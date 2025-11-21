@@ -99,7 +99,7 @@ app.use(express.static(ANGULAR_DIST_PATH));
 
 // --- 3. ROTA DE FALLBACK (Resolve "Cannot GET /" e Roteamento SPA) ---
 // Para qualquer outra rota não capturada pela API, serve o index.html do Angular.
-app.get('*', (req, res) => {
+app.get('/*', (req, res) => { 
     res.sendFile(path.join(ANGULAR_DIST_PATH, 'index.html'));
 });
 
