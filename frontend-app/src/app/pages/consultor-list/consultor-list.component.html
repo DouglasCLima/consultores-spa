@@ -1,0 +1,67 @@
+<div class="container mt-4">
+  <div class="d-flex justify-content-between align-items-center mb-4">
+    <h2>Lista de Consultores</h2>
+    <a *ngIf="isAdmin$ | async" routerLink="/consultores/novo" class="btn btn-success">
+      + Novo Consultor
+    </a>
+  </div>
+  
+  <div class="row mb-4 gx-3">
+    <div class="col-md-8 mb-3 mb-md-0">
+      <input
+        type="text"
+        class="form-control"
+        placeholder="Buscar por nome, email ou especialidade..."
+        [(ngModel)]="searchTerm"
+        (input)="triggerSearch()"
+      >
+    </div>
+
+    <div class="col-md-4">
+      <select
+        class="form-select"
+        [(ngModel)]="selectedEspecialidade"
+        (change)="triggerSearch()"
+      >
+        <option value="">Todas as Especialidades</option>
+        <option *ngFor="let esp of especialidades" [value]="esp">{{ esp }}</option>
+      </select>
+    </div>
+  </div>
+  <div class="table-responsive card shadow-sm">
+    <table class="table table-hover mb-0">
+    </table>
+  </div>
+</div>
+
+  <div class="table-responsive card shadow-sm">
+    <table class="table table-hover mb-0">
+      <thead class="table-light">
+        <tr>
+          <th>Nome</th>
+          <th>E-mail</th>
+          <th>Especialidade</th>
+          <th>Data Cadastro</th>
+          <th class="text-end" *ngIf="isAdmin$ | async">Ações</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr *ngFor="let consultor of consultores">
+          <td>{{ consultor.nomeCompleto }}</td>
+          <td>{{ consultor.email }}</td>
+          <td><span class="badge bg-info text-dark">{{ consultor.areaEspecializacao }}</span></td>
+          <td>{{ consultor.dataCadastro | date: 'dd/MM/yyyy' }}</td>
+
+          <td class="text-end" *ngIf="isAdmin$ | async">
+            <a [routerLink]="['/consultores/editar', consultor.id]" class="btn btn-sm btn-outline-primary me-2">
+              Editar
+            </a>
+            <button (click)="onDelete(consultor.id)" class="btn btn-sm btn-outline-danger">
+              Excluir
+            </button>
+          </td>
+        </tr>
+        </tbody>
+    </table>
+  </div>
+

@@ -1,0 +1,7 @@
+.table th, .table td {
+  vertical-align: middle;
+}
+
+.table td {
+  white-space: nowrap; /* Impede que o texto dentro das células da tabela quebre */
+}

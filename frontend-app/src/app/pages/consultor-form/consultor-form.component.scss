@@ -1,0 +1,16 @@
+.card {
+  max-width: 800px;
+  margin: 20px auto; /* Adiciona margem superior e inferior */
+  border: none;
+  border-radius: 12px;
+}
+
+.card-header {
+  border-bottom: 1px solid #eee;
+  padding: 1rem 1.5rem;
+}
+
+/* Garantir que as mensagens de erro fiquem bem visíveis */
+.is-invalid + .invalid-feedback {
+  display: block;
+}

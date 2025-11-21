@@ -1,0 +1,23 @@
+<header class="navbar navbar-expand-lg navbar-dark bg-primary shadow">
+  <div class="container-fluid">
+    <a class="navbar-brand fw-bold" routerLink="/consultores">{{ title }}</a>
+
+    <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
+      <span class="navbar-toggler-icon"></span>
+    </button>
+
+    <div class="collapse navbar-collapse justify-content-end" id="navbarNav">
+      <div class="navbar-nav align-items-lg-center">
+        <ng-container *ngIf="authService.user$ | async as user">
+          <span class="navbar-text me-3 text-white">
+            <small>Logado como:</small> **{{ user.email }}**
+          </span>
+          <button class="btn btn-sm btn-warning" (click)="authService.logout()">
+            Logout
+          </button>
+        </ng-container>
+        <a *ngIf="!(authService.user$ | async)" routerLink="/login" class="btn btn-sm btn-success">Login</a>
+      </div>
+    </div>
+  </div>
+</header>
