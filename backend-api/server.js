@@ -8,7 +8,7 @@ const PORT = 3000;
 // --- CONFIGURAÇÃO DE MIDDLEWARE ---
 
 // Permite conexões do Frontend Angular (http://localhost:4200)
-app.use(cors({ origin: 'http://localhost:4200' }));
+// app.use(cors({ origin: 'http://localhost:4200' }));
 app.use(bodyParser.json());
 
 // --- MOCK DE DADOS EM MEMÓRIA ---
